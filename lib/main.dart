@@ -13,7 +13,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Dish Discover',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(backgroundColor: Colors.amber),
+        primarySwatch: Colors.pink,
+        canvasColor: Color.fromRGBO(255, 245, 229, 1),
+        fontFamily: 'Raleway',
+        textTheme: ThemeData.light().textTheme.copyWith(
+          bodyLarge: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+          bodyMedium: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+          titleSmall: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: "RobotoCondensed",
+          ),
+        ),
+      ),
       routes: {'/': (context) => CategoriesScreen()},
     );
   }

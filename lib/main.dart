@@ -1,4 +1,5 @@
 import 'package:dish_discover/screen/categories_screen.dart';
+import 'package:dish_discover/screen/category_meals_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,7 +29,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      routes: {'/': (context) => CategoriesScreen()},
+      routes: {
+        '/': (context) => CategoriesScreen(),
+        '/category-meals': (context) => CategoryMealsScreen(),
+      },
     );
   }
 }

@@ -25,7 +25,7 @@ const List<Meal> DUMMY_MEALS = [
     affordability: Affordability.affordable,
     complexity: Complexity.simple,
     imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfe3iclf6T0R9B_8oq3828-v4w7reqDNut7JI-y1QhPA&s=10',
     duration: 20,
     ingredients: [
       '4 Tomatoes',

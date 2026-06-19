@@ -1,4 +1,4 @@
-import 'package:dish_discover/data/dummy_data.dart';
+import 'package:dish_discover/providers/favorite_provider.dart';
 import 'package:dish_discover/providers/meal_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -97,6 +97,16 @@ class MealDetailScreen extends ConsumerWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.amber,
+        shape: const CircleBorder(),
+        onPressed: () {
+          ref.watch(favoriteProvider.notifier).toggleFavorite(meal);
+        },
+        child: ref.watch(favoriteProvider).contains(meal)
+            ? Icon(Icons.star, color: Colors.black)
+            : Icon(Icons.star_outline, color: Colors.black),
       ),
     );
   }

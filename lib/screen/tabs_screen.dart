@@ -27,8 +27,8 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(title: Text('Dish Discover')),
       body: _pages[_selectedPageIndex],
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.black,
-        selectedItemColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.brown,
+        selectedItemColor: Colors.black,
         currentIndex: _selectedPageIndex,
         onTap: (value) => _selectPage(value),
         type: BottomNavigationBarType.shifting,

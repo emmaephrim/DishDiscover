@@ -1,5 +1,6 @@
-import 'package:dish_discover/screen/categories_screen.dart';
-import 'package:dish_discover/screen/favorites_screen.dart';
+import 'categories_screen.dart';
+import 'favorites_screen.dart';
+import '../widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -23,17 +24,7 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Builder(
-          builder: (context) {
-            return InkWell(
-              onTap: () => Scaffold.of(context).openDrawer(),
-              child: Icon(Icons.menu),
-            );
-          },
-        ),
-        title: Text('Dish Discover'),
-      ),
+      appBar: AppBar(title: Text('Dish Discover')),
       body: _pages[_selectedPageIndex],
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.black,
@@ -54,9 +45,7 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
         ],
       ),
-      drawer: Drawer(
-        child: Column(children: [Text("list"), Text(" List 2ll")]),
-      ),
+      drawer: MainDrawer(),
     );
   }
 }

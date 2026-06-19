@@ -1,7 +1,9 @@
 import 'package:dish_discover/data/dummy_data.dart';
+import 'package:dish_discover/providers/meal_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MealDetailScreen extends StatelessWidget {
+class MealDetailScreen extends ConsumerWidget {
   static const routeName = '/meal-detail-screen';
 
   const MealDetailScreen({super.key});
@@ -29,9 +31,10 @@ class MealDetailScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final dummyMeals = ref.watch(mealProvider);
     final mealId = ModalRoute.of(context)!.settings.arguments as String;
-    final meal = DUMMY_MEALS.firstWhere((item) => item.id == mealId);
+    final meal = dummyMeals.firstWhere((item) => item.id == mealId);
 
     return Scaffold(
       appBar: AppBar(title: Text(meal.title)),
@@ -41,7 +44,23 @@ class MealDetailScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               height: 300,
-              child: Image.network(meal.imageUrl, fit: BoxFit.cover),
+              child: Image.network(
+                meal.imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 300,
+                    width: double.infinity,
+                    color: Colors.grey.shade300,
+                    alignment: Alignment.center,
+                    child: const Icon(
+                      Icons.broken_image,
+                      size: 48,
+                      color: Colors.grey,
+                    ),
+                  );
+                },
+              ),
             ),
             buildSectionTitle(context, "Ingredients"),
             buildContainer(

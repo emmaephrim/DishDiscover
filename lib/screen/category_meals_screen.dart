@@ -1,9 +1,11 @@
+import 'package:dish_discover/providers/meal_provider.dart';
 import 'package:dish_discover/widgets/meal_item.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/dummy_data.dart';
 import 'package:flutter/material.dart';
 
-class CategoryMealsScreen extends StatelessWidget {
+class CategoryMealsScreen extends ConsumerWidget {
   static const routeName = "category-meals";
   //   final String categoryId;
   //   final String categoryTitle;
@@ -15,13 +17,15 @@ class CategoryMealsScreen extends StatelessWidget {
   //   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final dummyMeals = ref.watch(mealProvider);
+
     final routeArgs =
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final categoryId = routeArgs['id'] as String;
     final categoryTitle = routeArgs['title'] as String;
 
-    final categoryMeals = DUMMY_MEALS
+    final categoryMeals = dummyMeals
         .where((item) => item.categories.contains(categoryId))
         .toList();
     return Scaffold(

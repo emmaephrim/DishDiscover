@@ -4,9 +4,10 @@ import 'package:dish_discover/screen/filters_screen.dart';
 import 'package:dish_discover/screen/meal_detail_screen.dart';
 import 'package:dish_discover/screen/tabs_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

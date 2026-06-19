@@ -10,32 +10,52 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  final List<Widget> _pages = [CategoriesScreen(), FavoritesScreen()];
+
+  int _selectedPageIndex = 0;
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          leading: Builder(
-            builder: (context) {
-              return InkWell(
-                onTap: () => Scaffold.of(context).openDrawer(),
-                child: Icon(Icons.menu),
-              );
-            },
+    return Scaffold(
+      appBar: AppBar(
+        leading: Builder(
+          builder: (context) {
+            return InkWell(
+              onTap: () => Scaffold.of(context).openDrawer(),
+              child: Icon(Icons.menu),
+            );
+          },
+        ),
+        title: Text('Dish Discover'),
+      ),
+      body: _pages[_selectedPageIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Theme.of(context).primaryColor,
+        currentIndex: _selectedPageIndex,
+        onTap: (value) => _selectPage(value),
+        type: BottomNavigationBarType.shifting,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.amber,
+            icon: Icon(Icons.category),
+            label: "Categories",
           ),
-          title: Text('Dish Discover'),
-        ),
-        bottomSheet: TabBar(
-          tabs: [
-            Tab(icon: Icon(Icons.category), text: "Categories"),
-            Tab(icon: Icon(Icons.star), text: "Favorites"),
-          ],
-        ),
-        body: TabBarView(children: [CategoriesScreen(), FavoritesScreen()]),
-        drawer: Drawer(
-          child: Column(children: [Text("list"), Text(" List 2ll")]),
-        ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.amber,
+            icon: Icon(Icons.star),
+            label: "Favorites",
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: Column(children: [Text("list"), Text(" List 2ll")]),
       ),
     );
   }

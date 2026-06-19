@@ -20,10 +20,7 @@ class _TabsScreenState extends State<TabsScreen> {
             builder: (context) {
               return InkWell(
                 onTap: () => Scaffold.of(context).openDrawer(),
-                child: Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Icon(Icons.menu),
-                ),
+                child: Icon(Icons.menu),
               );
             },
           ),
@@ -32,7 +29,7 @@ class _TabsScreenState extends State<TabsScreen> {
         bottomSheet: TabBar(
           tabs: [
             Tab(icon: Icon(Icons.category), text: "Categories"),
-            Tab(icon: Icon(Icons.favorite), text: "Favorites"),
+            Tab(icon: Icon(Icons.star), text: "Favorites"),
           ],
         ),
         body: TabBarView(children: [CategoriesScreen(), FavoritesScreen()]),

@@ -31,9 +31,9 @@ class FilterNotifier extends Notifier<Map<String, bool>> {
   Map<String, bool> build() {
     return {
       'isGlutenFree': false,
-      'isVegan': true,
-      'isVegetarian': true,
-      'isLactoseFree': true,
+      'isVegan': false,
+      'isVegetarian': false,
+      'isLactoseFree': false,
     };
   }
 

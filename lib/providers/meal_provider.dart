@@ -1,55 +1,27 @@
-import 'package:dish_discover/data/dummy_data.dart';
-import 'package:dish_discover/models/meal.dart';
-import 'package:flutter_riverpod/legacy.dart';
+import 'filter_provider.dart';
 
-final mealProvider =
-    StateNotifierProvider.autoDispose<MealNotifier, List<Meal>>((ref) {
-      return MealNotifier();
-    });
+import '../data/dummy_data.dart';
+import '../models/meal.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MealNotifier extends StateNotifier<List<Meal>> {
-  MealNotifier() : super(DUMMY_MEALS);
+final filteredMealsProvider = Provider<List<Meal>>((ref) {
+  // Whenever filterProvider changes, this entire block re-runs automatically!
+  final activeFilters = ref.watch(filterProvider);
 
-  void removeMeal(String id) {
-    state = state.where((meal) => meal.id != id).toList();
-  }
-
-  void filterVegan(bool status) {
-    if (status == true) {
-      state = state.where((item) => item.isVegan == true).toList();
-    } else {
-      state = state.where((item) => item.isVegan == false).toList();
+  //Filter the static DUMMY_MEALS list based on the active state
+  return DUMMY_MEALS.where((meal) {
+    if (activeFilters['isGlutenFree'] == true && !meal.isGlutenFree) {
+      return false; // Filter says gluten-free only, but this meal isn't. Skip it.
     }
-  }
-
-  void filterVegetarian(bool status) {
-    state = state.where((item) => item.isVegan == true).toList();
-  }
-}
-
-// class TodoListNotifier extends StateNotifier<List<Todo>> {
-//   TodoListNotifier() : super([]);
-
-//   void addTodo(String content) {
-//     state = [
-//       ...state,
-//       Todo(
-//         todoId: state.isEmpty ? 0 : state[state.length - 1].todoId + 1,
-//         content: content,
-//         completed: false,
-//       ),
-//     ];
-//   }
-
-//   void completeTodo(int id) {
-//     state = state
-//         .map(
-//           (todo) => todo.todoId == id ? todo.copyWith(completed: true) : todo,
-//         )
-//         .toList();
-//   }
-
-//   void deleteTodo(Todo todo) {
-//     state = state.where((t) => t.todoId != todo.todoId).toList();
-//   }
-// }
+    if (activeFilters['isVegan'] == true && !meal.isVegan) {
+      return false;
+    }
+    if (activeFilters['isVegetarian'] == true && !meal.isVegetarian) {
+      return false;
+    }
+    if (activeFilters['isLactoseFree'] == true && !meal.isLactoseFree) {
+      return false;
+    }
+    return true; // Meal passed all active filters!
+  }).toList();
+});

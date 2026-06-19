@@ -32,7 +32,7 @@ class MealDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dummyMeals = ref.watch(mealProvider);
+    final dummyMeals = ref.watch(filteredMealsProvider);
     final mealId = ModalRoute.of(context)!.settings.arguments as String;
     final meal = dummyMeals.firstWhere((item) => item.id == mealId);
 

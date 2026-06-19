@@ -1,24 +1,22 @@
 import 'package:dish_discover/providers/meal_provider.dart';
 import 'package:dish_discover/widgets/meal_item.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../data/dummy_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CategoryMealsScreen extends ConsumerWidget {
   static const routeName = "category-meals";
   //   final String categoryId;
   //   final String categoryTitle;
 
-  //   const CategoryMealsScreen({
-  //     super.key,
-  //     required this.categoryId,
-  //     required this.categoryTitle,
-  //   });
+  const CategoryMealsScreen({
+    super.key,
+    // required this.categoryId,
+    // required this.categoryTitle,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dummyMeals = ref.watch(mealProvider);
+    final dummyMeals = ref.watch(filteredMealsProvider);
 
     final routeArgs =
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;

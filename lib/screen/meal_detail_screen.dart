@@ -39,6 +39,7 @@ class MealDetailScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(meal.title)),
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: 20),
         child: Column(
           children: [
             SizedBox(

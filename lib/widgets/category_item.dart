@@ -44,21 +44,26 @@ class CategoryItem extends StatelessWidget {
             Positioned.fill(child: Image.asset(image, fit: BoxFit.cover)),
             Positioned.fill(
               child: Container(
-                // color: color.withOpacity(0.3)
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [color.withOpacity(0.5), color],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                ),
+                color: Colors.black.withOpacity(0.5),
+                // decoration: BoxDecoration(
+                //   gradient: LinearGradient(
+                //     colors: [color.withOpacity(0.5), color],
+                //     begin: Alignment.topLeft,
+                //     end: Alignment.bottomRight,
+                //   ),
+                // ),
               ),
             ),
             Positioned.fill(
               child: Center(
                 child: Text(
                   title,
-                  style: Theme.of(context).textTheme.titleSmall,
+                  // style: Theme.of(context).textTheme.titleSmall,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),

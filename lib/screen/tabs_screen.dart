@@ -29,14 +29,11 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
-        actions: [
-          Builder(
-            builder: (context) => IconButton(
-              onPressed: () => Scaffold.of(context).openEndDrawer(),
-              icon: Icon(Icons.restaurant_menu),
-            ),
-          ),
-        ],
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Icon(Icons.restaurant_menu),
+        ),
+        leadingWidth: 40,
       ),
       body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(

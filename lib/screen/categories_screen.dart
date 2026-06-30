@@ -22,8 +22,12 @@ class CategoriesScreen extends ConsumerWidget {
       ),
       children: categories
           .map(
-            (item) =>
-                CategoryItem(color: item.color, title: item.title, id: item.id),
+            (item) => CategoryItem(
+              color: item.color,
+              title: item.title,
+              id: item.id,
+              image: item.image,
+            ),
           )
           .toList(),
     );

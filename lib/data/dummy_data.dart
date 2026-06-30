@@ -5,16 +5,66 @@ import 'package:flutter/material.dart';
 import '../models/category.dart';
 
 const List<Category> DUMMY_CATEGORIES = [
-  Category(id: 'c1', title: 'Italian', color: Colors.purple),
-  Category(id: 'c2', title: 'Quick & Easy', color: Colors.red),
-  Category(id: 'c3', title: 'Hamburgers', color: Colors.orange),
-  Category(id: 'c4', title: 'German', color: Colors.amber),
-  Category(id: 'c5', title: 'Light & Lovely', color: Colors.blue),
-  Category(id: 'c6', title: 'Exotic', color: Colors.green),
-  Category(id: 'c7', title: 'Breakfast', color: Colors.lightBlue),
-  Category(id: 'c8', title: 'Asian', color: Colors.lightGreen),
-  Category(id: 'c9', title: 'French', color: Colors.pink),
-  Category(id: 'c10', title: 'Summer', color: Colors.teal),
+  Category(
+    id: 'c1',
+    title: 'Italian',
+    color: Colors.purple,
+    image: "assets/images/dishes/italian.jpg",
+  ),
+  Category(
+    id: 'c2',
+    title: 'Quick & Easy',
+    color: Colors.red,
+    image: "assets/images/dishes/quick_and_easy.jpg",
+  ),
+  Category(
+    id: 'c3',
+    title: 'Hamburgers',
+    color: Colors.orange,
+    image: "assets/images/dishes/hamburgers.jpg",
+  ),
+  Category(
+    id: 'c4',
+    title: 'German',
+    color: Colors.amber,
+    image: "assets/images/dishes/german.jpg",
+  ),
+  Category(
+    id: 'c5',
+    title: 'Light & Lovely',
+    color: Colors.blue,
+    image: "assets/images/dishes/light_and_lovely.jpg",
+  ),
+  Category(
+    id: 'c6',
+    title: 'Exotic',
+    color: Colors.green,
+    image: "assets/images/dishes/exotic.jpg",
+  ),
+  Category(
+    id: 'c7',
+    title: 'Breakfast',
+    color: Colors.lightBlue,
+    image: "assets/images/dishes/breakfast.jpg",
+  ),
+  Category(
+    id: 'c8',
+    title: 'Asian',
+    color: Colors.lightGreen,
+    image: "assets/images/dishes/asian.jpg",
+  ),
+  Category(
+    id: 'c9',
+    title: 'French',
+    color: Colors.pink,
+    image: "assets/images/dishes/french.jpg",
+  ),
+  Category(
+    id: 'c10',
+    title: 'Summer',
+    color: Colors.teal,
+    image: "assets/images/dishes/summer.jpg",
+  ),
 ];
 
 const List<Meal> DUMMY_MEALS = [

@@ -5,18 +5,20 @@ class CategoryItem extends StatelessWidget {
   final String id;
   final String title;
   final Color color;
+  final String image;
 
   const CategoryItem({
     super.key,
     required this.color,
     required this.title,
     required this.id,
+    required this.image,
   });
 
   void selectCategory(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
       CategoryMealsScreen.routeName,
-      arguments: {'id': id, 'title': title, 'color': color},
+      arguments: {'id': id, 'title': title, 'color': color, 'image': image},
     );
   }
 
@@ -27,7 +29,8 @@ class CategoryItem extends StatelessWidget {
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
       child: Container(
-        padding: const EdgeInsets.all(15),
+        // padding: const EdgeInsets.all(15),
+        clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           gradient: LinearGradient(
@@ -36,7 +39,31 @@ class CategoryItem extends StatelessWidget {
             end: Alignment.bottomRight,
           ),
         ),
-        child: Text(title, style: Theme.of(context).textTheme.titleSmall),
+        child: Stack(
+          children: [
+            Positioned.fill(child: Image.asset(image, fit: BoxFit.cover)),
+            Positioned.fill(
+              child: Container(
+                // color: color.withOpacity(0.3)
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [color.withOpacity(0.2), color],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: Center(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
